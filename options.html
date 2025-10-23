@@ -19,18 +19,40 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
-  }
-}
-</script>
 </head>
 <body class="bg-slate-900">
-    <div id="root"></div>
-    <script type="module" src="/options.tsx"></script>
+    <div class="min-h-screen bg-slate-900 text-white font-sans flex items-center justify-center">
+        <div class="max-w-md w-full p-8 bg-slate-800 rounded-lg shadow-2xl">
+            <h1 class="text-3xl font-bold text-slate-100 mb-2">Settings</h1>
+            <p class="text-slate-400 mb-6">Configure your AI UI/UX Critique extension.</p>
+            
+            <div class="space-y-4">
+                <div>
+                    <label for="apiKey" class="block text-sm font-medium text-slate-300 mb-1">
+                        Gemini API Key
+                    </label>
+                    <input
+                        type="password"
+                        id="apiKey"
+                        placeholder="Enter your Gemini API Key"
+                        class="w-full bg-slate-900 text-slate-300 px-3 py-2 rounded-md border border-slate-600 focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition"
+                    />
+                    <p class="text-xs text-slate-500 mt-2">
+                        You can get your API key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:underline">Google AI Studio</a>. The key is stored locally and securely in your browser.
+                    </p>
+                </div>
+
+                <button
+                    id="save"
+                    class="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200"
+                >
+                    Save Key
+                </button>
+
+                <p id="status" class="text-sm text-green-400 text-center h-5"></p>
+            </div>
+        </div>
+    </div>
+    <script src="/options.js"></script>
 </body>
 </html>
