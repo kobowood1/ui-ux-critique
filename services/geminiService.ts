@@ -2,23 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { AnalysisType } from '../types';
 import { ANALYSIS_OPTIONS } from '../constants';
 
-declare const chrome: any;
-
-const getApiKey = (): Promise<string> => {
-  return new Promise((resolve, reject) => {
-    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
-      chrome.storage.local.get(['apiKey'], (result: { apiKey?: string }) => {
-        if (result.apiKey) {
-          resolve(result.apiKey);
-        } else {
-          reject(new Error("Gemini API key not found. Please set it in the extension's options page."));
-        }
-      });
-    } else {
-       reject(new Error("This does not seem to be a Chrome extension environment. API key cannot be retrieved."));
-    }
-  });
-};
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
 
 const getPrompt = (analysisType: AnalysisType, code: string): string => {
   const option = ANALYSIS_OPTIONS.find(opt => opt.id === analysisType);
@@ -39,9 +23,6 @@ export const analyzeCode = async (analysisType: AnalysisType, code: string): Pro
   if (!code.trim()) {
     throw new Error("Please enter some HTML and/or CSS code to analyze.");
   }
-
-  const apiKey = await getApiKey();
-  const ai = new GoogleGenAI({ apiKey });
 
   try {
     const prompt = getPrompt(analysisType, code);

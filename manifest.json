@@ -6,13 +6,11 @@
   "permissions": [
     "sidePanel",
     "activeTab",
-    "scripting",
-    "storage"
+    "scripting"
   ],
   "side_panel": {
     "default_path": "index.html"
   },
-  "options_page": "options.html",
   "action": {
     "default_title": "Open AI UI/UX Critique"
   },
@@ -29,5 +27,8 @@
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://cdn.tailwindcss.com https://unpkg.com https://aistudiocdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; object-src 'self'"
   }
 }

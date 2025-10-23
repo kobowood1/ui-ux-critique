@@ -1,0 +1,15 @@
+/*
+ This file replaces the inline tailwind.config.js script to make the extension
+ compliant with Manifest V3's Content Security Policy.
+*/
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-sans {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-mono {
+  font-family: 'Fira Code', monospace;
+}
